@@ -58,11 +58,13 @@
   "dependencies": {
     "mixwith": "~0.1.1",
     "request": "^2.81.0",
-    "request-promise": "~4.1.1"
+    "request-promise": "~4.1.1",
+    "snyk": "^1.316.1"
   },
   "scripts": {
-    "prepublish": "gulp dist",
-    "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register test/src/ test/standard.js"
+    "prepublish": "npm run snyk-protect && gulp dist",
+    "test": "./node_modules/mocha/bin/mocha --compilers js:babel-core/register test/src/ test/standard.js",
+    "snyk-protect": "snyk protect"
   },
   "main": "./dist/cjs.js",
   "license": "MIT",
@@ -83,5 +85,6 @@
   },
   "directories": {
     "test": "test"
-  }
+  },
+  "snyk": true
 }
